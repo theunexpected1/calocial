@@ -1,0 +1,33 @@
+{
+  "name": "calocial",
+  "version": "0.0.1",
+  "description": "Social network around events, meetings and all things calendar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theunexpected1/calocial.git"
+  },
+  "keywords": [
+    "calocial",
+    "social",
+    "calendar",
+    "meetings",
+    "events",
+    "office",
+    "corporate"
+  ],
+  "author": "Rahul Vagadiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theunexpected1/calocial/issues"
+  },
+  "homepage": "https://github.com/theunexpected1/calocial",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "mongoose": "^4.0.1"
+  }
+}
