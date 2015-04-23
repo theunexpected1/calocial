@@ -1,0 +1,22 @@
+{
+  "name": "calocial",
+  "main": "index.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/theunexpected1/calocial",
+  "authors": [
+    "Rahul Vagadiya <rahul.vagadiya@gmail.com>"
+  ],
+  "description": "your personal digital card",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~0.8.3"
+  }
+}
