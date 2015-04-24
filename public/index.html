@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="/components/angular-material/angular-material.css">
 </head>
     
-    <body ng-app="YourApp">
+    <body ng-app="calocial">
 
-        <div ng-controller="YourController">
+        <div ng-controller="mainController">
             Hello world!
         </div>
 
@@ -19,9 +19,9 @@
         <script>
 
             // Include app dependency on ngMaterial
-
-            angular.module( 'YourApp', [ 'ngMaterial' ] )
-                .controller("YourController", YourController );
+            angular.module('calocial', ['ngMaterial'])
+                .controller("mainController", function(){
+                });
 
         </script>
 
