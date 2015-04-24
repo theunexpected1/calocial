@@ -2,16 +2,18 @@
 // Modules ========================================
 var express = require('express'),
 	app = express(),
+	bunyan = require('bunyan'),
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
-	port = process.env.PORT || 8080,
 	dbConfig = {
 		url: 'mongodb://localhost/calocial'
 	},
 	System = {
 		app: app,
-		express: express
-	};
+		express: express,
+		log: bunyan.createLogger({name: 'calocial'})
+	},
+	port = process.env.PORT || 8080;
 
 
 // Configurations =================================
@@ -28,6 +30,9 @@ app.use(express.static(__dirname + '/public'));
 
 // Database
 db = mongoose.connect(dbConfig.url);
+
+// Routes
+require('./modules/system/server/routes/system')(System);
 
 // Connect to database
 mongoose.connection.on('open', function(){
