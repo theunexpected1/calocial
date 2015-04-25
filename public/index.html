@@ -1,29 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/components/angular-material/angular-material.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/components/angular-material/angular-material.css">
+	<link rel="stylesheet" href="/components/font-awesome/css/font-awesome.css">
 </head>
-    
-    <body ng-app="calocial">
 
-        <div ng-controller="mainController">
-            Hello world!
-        </div>
+<body ng-app="calocial">
+		<!-- Toolbar / Header -->
+		<md-toolbar layout="row" class="md-warn">
+			<div class="md-toolbar-tools">
+				<!-- Menu button -->
+				<md-button class="md-icon-button" aria-label="Menu">
+					<span class="fa fa-lg fa-bars"></span>
+				</md-button>
+				<!-- Title -->
+				<h3>
+					<span>Calocial</span>
+				</h3>
+				<span flex></span>
+				<!-- Register / Login links-->
+				<md-button>Register</md-button>
+				<md-button class="md-raised md-button md-default-theme">Login</md-button>
 
-        <script src="/components/angular/angular.js"></script>
-        <script src="/components/angular-aria/angular-aria.js"></script>
-        <script src="/components/angular-animate/angular-animate.js"></script>
-        <script src="/components/angular-material/angular-material.js"></script>
+			</div>
+		</md-toolbar>
 
-        <script>
+		<div layout="row" layout-padding ng-controller="mainController">
+			<div class="container">
 
-            // Include app dependency on ngMaterial
-            angular.module('calocial', ['ngMaterial'])
-                .controller("mainController", function(){
-                });
+				<!-- Angular View -->
+				<div ng-view></div>
+			</div>
+		</div>
 
-        </script>
+	<script src="/components/angular/angular.js"></script>
+	<script src="/components/angular-aria/angular-aria.js"></script>
+	<script src="/components/angular-animate/angular-animate.js"></script>
+	<script src="/components/angular-material/angular-material.js"></script>
 
-    </body>
+	<script>
+		// Include app dependency on ngMaterial
+		angular.module('calocial', ['ngMaterial'])
+			.controller("mainController", function(){
+			});
+
+	</script>
+
+</body>
 </html>
