@@ -26,7 +26,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // set the static files location 
 // /public/img will be /img for users
-app.use(express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
+app.use('/modules', express.static(__dirname + '/modules'));
 
 // Database
 db = mongoose.connect(dbConfig.url);
