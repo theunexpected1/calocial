@@ -7,23 +7,23 @@
 				</div>
 			</md-toolbar>
 
-			<form action="" name="register"  class="form" layout="column" flex layout-padding layout-margin>
+			<form action="" name="register" ng-submit="create()" class="form" layout="column" flex layout-padding layout-margin>
 				<div layout="row">
 					<md-input-container flex>
 						<label> Name</label>
-						<input ng-model="name" required>
+						<input ng-model="user.name" required>
 					</md-input-container>
 				</div>
 				<div layout="row">
 					<md-input-container flex>
 						<label> Email</label>
-						<input ng-model="email" type="email" required>
+						<input ng-model="user.email" type="email" required>
 					</md-input-container>
 				</div>
-				<div layout="row" layout-md="column">
+				<div layout="column" layout-gt-md="row">
 					<md-input-container flex>
 						<label> Password</label>
-						<input ng-model="password" type="password" required>
+						<input ng-model="user.password" type="password" required>
 					</md-input-container>
 					<md-input-container flex>
 						<label> Confirm password</label>
@@ -31,7 +31,7 @@
 					</md-input-container>
 				</div>
 				<div layout="row" layout-align="end end">
-					<md-button class="md-primary md-raised md-button">Submit</md-button>
+					<md-button type="submit" class="md-primary md-raised md-button">Submit</md-button>
 				</div>
 			</form>
 

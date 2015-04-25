@@ -1,5 +1,5 @@
 // Angular App
-	angular.module('app', ['ngMaterial', 'calocial.users'])
+	angular.module('app', ['ngMaterial', 'ngResource', 'calocial.users'])
 		.config(['$mdThemingProvider', function($mdThemingProvider) {
 			$mdThemingProvider.theme('default')
 				.primaryPalette('cyan', {

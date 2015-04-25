@@ -1,6 +1,9 @@
 // Users route
-angular.module('calocial.users', ['ui.router'])
-	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+angular.module('calocial.users')
+	.config([
+		'$stateProvider', 
+		'$urlRouterProvider',
+		function($stateProvider, $urlRouterProvider){
 		
 		$urlRouterProvider.otherwise('/');
 
@@ -11,7 +14,8 @@ angular.module('calocial.users', ['ui.router'])
 			})
 			.state('auth/register', {
 				url: '/auth/register',
-				templateUrl: '/modules/users/public/views/register.html'
+				templateUrl: '/modules/users/public/views/register.html',
+				controller: 'UserController'
 			})
 			.state('auth/login', {
 				url: '/auth/login',
