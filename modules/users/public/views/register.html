@@ -1,4 +1,4 @@
-<div ng-form layout="row" flex layout-align="center center">
+<div layout="row" flex layout-align="center center"  ng-controller="UserController" >
 	<div layout="row" flex="100" flex-gt-md="50" >
 		<md-whiteframe class="md-whiteframe-z1" layout="column" flex>
 			<md-toolbar class="" layout="row">
@@ -7,7 +7,7 @@
 				</div>
 			</md-toolbar>
 
-			<form action="" name="register" ng-submit="create()" class="form" layout="column" flex layout-padding layout-margin>
+			<form name="userForm" ng-submit="create()" class="form" layout="column" flex layout-padding layout-margin>
 				<div layout="row">
 					<md-input-container flex>
 						<label> Name</label>
