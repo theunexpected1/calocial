@@ -1,5 +1,5 @@
 <div ng-form layout="row" flex layout-align="center center">
-	<div layout="row" flex="50" >
+	<div layout="row" flex="100" flex-gt-md="50" >
 		<md-whiteframe class="md-whiteframe-z1" layout="column" flex>
 			<md-toolbar class="" layout="row">
 				<div class="md-toolbar-tools">
@@ -20,7 +20,7 @@
 						<input ng-model="email" type="email" required>
 					</md-input-container>
 				</div>
-				<div layout="row">
+				<div layout="row" layout-md="column">
 					<md-input-container flex>
 						<label> Password</label>
 						<input ng-model="password" type="password" required>
