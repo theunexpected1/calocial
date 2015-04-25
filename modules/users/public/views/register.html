@@ -1,0 +1,41 @@
+<div ng-form layout="row" flex layout-align="center center">
+	<div layout="row" flex="50" >
+		<md-whiteframe class="md-whiteframe-z1" layout="column" flex>
+			<md-toolbar class="" layout="row">
+				<div class="md-toolbar-tools">
+					<h3> Register</h3>
+				</div>
+			</md-toolbar>
+
+			<form action="" name="register"  class="form" layout="column" flex layout-padding layout-margin>
+				<div layout="row">
+					<md-input-container flex>
+						<label> Name</label>
+						<input ng-model="name" required>
+					</md-input-container>
+				</div>
+				<div layout="row">
+					<md-input-container flex>
+						<label> Email</label>
+						<input ng-model="email" type="email" required>
+					</md-input-container>
+				</div>
+				<div layout="row">
+					<md-input-container flex>
+						<label> Password</label>
+						<input ng-model="password" type="password" required>
+					</md-input-container>
+					<md-input-container flex>
+						<label> Confirm password</label>
+						<input type="password">
+					</md-input-container>
+				</div>
+				<div layout="row" layout-align="end end">
+					<md-button class="md-primary md-raised md-button">Submit</md-button>
+				</div>
+			</form>
+
+		</md-whiteframe>
+	</div>
+</div>
+
