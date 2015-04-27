@@ -5,10 +5,10 @@
 	<link rel="stylesheet" href="/components/angular-material/angular-material.css">
 	<link rel="stylesheet" href="/components/font-awesome/css/font-awesome.css">
 </head>
-
-<body ng-app="calocial">
+<body ng-app="app">
+	<div ng-controller="appController">
 		<!-- Toolbar / Header -->
-		<md-toolbar layout="row" class="md-warn">
+		<md-toolbar layout="row" flex class="md-primary">
 			<div class="md-toolbar-tools">
 				<!-- Menu button -->
 				<md-button class="md-icon-button" aria-label="Menu">
@@ -16,36 +16,35 @@
 				</md-button>
 				<!-- Title -->
 				<h3>
-					<span>Calocial</span>
+					<a ui-sref="/">Calocial</a>
 				</h3>
 				<span flex></span>
 				<!-- Register / Login links-->
-				<md-button>Register</md-button>
-				<md-button class="md-raised md-button md-default-theme">Login</md-button>
-
+					<md-button ng-show="isGuest" ui-sref="auth/register">Register</md-button>
+					<md-button ng-show="isGuest" ui-sref="auth/login" class="md-raised md-button md-default-theme">Login</md-button>
+					<md-button ng-show="!isGuest" ui-sref="/" class="md-raised md-button md-default-theme">{{user.name}}</md-button>
 			</div>
 		</md-toolbar>
 
-		<div layout="row" layout-padding ng-controller="mainController">
-			<div class="container">
+		<div layout="row" flex layout-padding>
 
-				<!-- Angular View -->
-				<div ng-view></div>
-			</div>
+			<!-- Angular View -->
+			<div layout="row" flex ui-view></div>
 		</div>
+	</div>
 
 	<script src="/components/angular/angular.js"></script>
-	<script src="/components/angular-aria/angular-aria.js"></script>
-	<script src="/components/angular-animate/angular-animate.js"></script>
-	<script src="/components/angular-material/angular-material.js"></script>
+	<script src="/components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-	<script>
-		// Include app dependency on ngMaterial
-		angular.module('calocial', ['ngMaterial'])
-			.controller("mainController", function(){
-			});
+	<script src="/components/angular-aria/angular-aria.min.js"></script>
+	<script src="/components/angular-animate/angular-animate.min.js"></script>
+	<script src="/components/angular-material/angular-material.min.js"></script>
+	<script src="/components/angular-resource/angular-resource.min.js"></script>
 
-	</script>
+	<script src="/modules/users/public/users.js"></script>
+	<script src="/modules/users/public/controllers/users.js"></script>
+	<script src="/modules/users/public/routes/users.js"></script>
+	<script src="/js/app.js"></script>
 
 </body>
 </html>

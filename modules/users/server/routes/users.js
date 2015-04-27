@@ -8,6 +8,9 @@ module.exports = function(System){
 	// Define routes here
 	// Create User
 	userRouter.post('/', userController.create);
+
+	// Login User
+	userRouter.post('/login/', userController.login);
 	
 	return userRouter;
 };
