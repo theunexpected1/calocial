@@ -63,5 +63,10 @@ module.exports = function(System){
 		});
 	});
 
+	// User methods
+	UserSchema.methods.isPasswordValid = function (password) {
+		return bcrypt.compareSync(password, this.password);
+	};
+
 	return mongoose.model('User', UserSchema);
 };

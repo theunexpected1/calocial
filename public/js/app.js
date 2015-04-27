@@ -14,5 +14,15 @@
 					'hue-2': 'A400'
 				});
 		}])
-		.controller("appController", function(){
-		});
+		.controller("appController", [
+			'$scope', 
+			'$location', 
+			function($scope, $location){
+			// Temporary setup
+			$scope.isGuest = true;
+			$scope.$on('loggedIn', function() {
+				$scope.isGuest = false;
+				$location.path('/');
+			});
+
+		}]);

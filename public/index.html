@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/components/angular-material/angular-material.css">
 </head>
 <body ng-app="app">
+	<div ng-controller="appController">
 		<!-- Toolbar / Header -->
 		<md-toolbar layout="row" flex class="md-primary">
 			<div class="md-toolbar-tools">
@@ -18,16 +19,18 @@
 				</h3>
 				<span flex></span>
 				<!-- Register / Login links-->
-				<md-button ui-sref="auth/register">Register</md-button>
-				<md-button ui-sref="auth/login" class="md-raised md-button md-default-theme">Login</md-button>
+					<md-button ng-show="isGuest" ui-sref="auth/register">Register</md-button>
+					<md-button ng-show="isGuest" ui-sref="auth/login" class="md-raised md-button md-default-theme">Login</md-button>
+					<md-button ng-show="!isGuest" ui-sref="/" class="md-raised md-button md-default-theme">{{user.name}}</md-button>
 			</div>
 		</md-toolbar>
 
-		<div layout="row" flex layout-padding ng-controller="appController">
+		<div layout="row" flex layout-padding>
 
 			<!-- Angular View -->
 			<div layout="row" flex ui-view></div>
 		</div>
+	</div>
 
 	<script src="/components/angular/angular.js"></script>
 	<script src="/components/angular-ui-router/release/angular-ui-router.min.js"></script>
