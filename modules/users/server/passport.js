@@ -6,7 +6,7 @@ module.exports = function(System){
 		LocalStrategy = require('passport-local').Strategy,
 		User = require('mongoose').model('User');
 	
-	System.log.info('setting passport middleware');
+	System.log.info('setting passport middleware for login');
 	
 	// Login middleware
 	passport.use('login', new LocalStrategy({
@@ -41,6 +41,8 @@ module.exports = function(System){
 			});
 		}
 	));
+
+	// toDo: Passport Strategy for Register 
 
 	// User serialization & deserialization for reading
 	passport.serializeUser(function(user, done) {
