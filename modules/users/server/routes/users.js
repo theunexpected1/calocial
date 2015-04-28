@@ -11,6 +11,7 @@ module.exports = function(System){
 
 	// Login User
 	userRouter.post('/login/', userController.login);
+	userRouter.post('/logout/', userController.logout);
 	
 	return userRouter;
 };

@@ -1,5 +1,6 @@
 // Angular App
-	angular.module('app', ['ngMaterial', 'ngResource', 'calocial.users'])
+
+	angular.module('app', ['ngMaterial', 'ngResource', 'calocial.helpers', 'calocial.users'])
 		.config(['$mdThemingProvider', function($mdThemingProvider) {
 			$mdThemingProvider.theme('default')
 				.primaryPalette('cyan', {
@@ -17,12 +18,31 @@
 		.controller("appController", [
 			'$scope', 
 			'$location', 
-			function($scope, $location){
-			// Temporary setup
-			$scope.isGuest = true;
-			$scope.$on('loggedIn', function() {
-				$scope.isGuest = false;
-				$location.path('/');
-			});
+			'storage',
+			function($scope, $location, storage){
+				// Temporary setup
+				$scope.isGuest = true;
+				$scope.$on('loggedIn', function() {
+					storage.set('user', angular.toJson($scope.user));
+					$scope.authenticate();
+					$location.path('/');
+				});
 
-		}]);
+				$scope.$on('loggedOut', function() {
+					storage.remove('user');
+					$scope.authenticate();
+					$location.path('/');
+				});
+
+				$scope.authenticate = function(){
+					if(storage.get('user')){
+						$scope.user = angular.fromJson(storage.get('user'));
+						$scope.isGuest = false;
+					} else{
+						$scope.isGuest = true;
+					}
+				}
+
+				// Initialize
+				$scope.authenticate();
+			}]);
