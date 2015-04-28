@@ -7,3 +7,6 @@ body{
 	right: 0;
 	bottom: 0;
 }
+md-whiteframe{
+	background: #fff;
+}

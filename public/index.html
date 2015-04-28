@@ -23,8 +23,10 @@
 				<!-- Register / Login links-->
 					<md-button ng-show="isGuest" ui-sref="auth/register">Register</md-button>
 					<md-button ng-show="isGuest" ui-sref="auth/login" class="md-raised md-button md-default-theme">Login</md-button>
-					<md-button ng-show="!isGuest" ui-sref="/" class="md-raised md-button md-default-theme">{{user.name}}</md-button>
-					<md-button ng-show="!isGuest" ng-controller="UserController" ng-click="logout()">Logout</md-button>
+					<md-button ng-show="!isGuest" ng-controller="UserController" ng-click="logout()" class="md-raised md-button md-default-theme">
+						<md-tooltip> Logout? </md-tooltip>
+						{{user.name}}
+					</md-button>
 
 			</div>
 		</md-toolbar>
