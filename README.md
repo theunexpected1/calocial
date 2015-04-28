@@ -1,2 +1,2 @@
 # calocial
-Calendar social network - A social network around your calendar: events, meetings, and all things corporate.
+An open source social network around meetings for everyone at work to keep track of meeting agenda, discussions, minutes and schedules
