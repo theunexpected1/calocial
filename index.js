@@ -27,8 +27,10 @@ var helperPath = './modules/system/server/helpers/';
 // Load Helpers
 var helperFiles = fs.readdirSync(helperPath);
 helperFiles.forEach(function(helperFile){
-	var helper = require(helperPath + helperFile)(System);
-	System.helpers[helper.key] = helper.module;
+	if(helperFile.indexOf('.js') > -1) {
+		var helper = require(helperPath + helperFile)(System);
+		System.helpers[helper.key] = helper.module;
+	}
 });
 
 // Middlewares

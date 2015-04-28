@@ -1,10 +1,13 @@
+// Users Module
+
 angular.module('calocial.users')
 	.controller('UserController', [
 		'$rootScope',
 		'$scope',
 		'$resource', 
+		'$location', 
 		'$mdToast', 
-		function($rootScope, $scope, $resource, $mdToast){
+		function($rootScope, $scope, $resource, $location, $mdToast){
 			$scope.user = {};
 			$scope.create = function(){
 				console.log($scope.user);
@@ -44,6 +47,16 @@ angular.module('calocial.users')
 					}
 				});
 			}
+			
+
+			$scope.logout = function(){
+				$resource('/auth/logout').save(function(res){
+					if(res.status){
+						$rootScope.$broadcast('loggedOut');
+					}
+				});
+			}
+			
 			$scope.resetForm = function(){
 				$scope.user = {};
 				$scope.userForm.$setPristine();

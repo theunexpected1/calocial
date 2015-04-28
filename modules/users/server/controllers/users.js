@@ -57,7 +57,7 @@ module.exports = function(System){
 		if(req.user){
 			req.logout();
 		}
-		req.redirect('/');
+		return communication.success(res);
 	};
 
 	return $thisUser;
