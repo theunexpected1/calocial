@@ -23,13 +23,11 @@
 				// Temporary setup
 				$scope.isGuest = true;
 				$scope.$on('loggedIn', function() {
-					storage.set('user', angular.toJson($scope.user));
 					$scope.authenticate();
 					$location.path('/');
 				});
 
 				$scope.$on('loggedOut', function() {
-					storage.remove('user');
 					$scope.authenticate();
 					$location.path('/');
 				});
@@ -39,6 +37,7 @@
 						$scope.user = angular.fromJson(storage.get('user'));
 						$scope.isGuest = false;
 					} else{
+						$scope.user = {};
 						$scope.isGuest = true;
 					}
 				}
