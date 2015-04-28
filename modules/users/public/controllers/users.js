@@ -7,7 +7,8 @@ angular.module('calocial.users')
 		'$resource', 
 		'$location', 
 		'$mdToast', 
-		function($rootScope, $scope, $resource, $location, $mdToast){
+		'storage',
+		function($rootScope, $scope, $resource, $location, $mdToast, storage){
 			$scope.user = {};
 			$scope.create = function(){
 				console.log($scope.user);
@@ -37,7 +38,7 @@ angular.module('calocial.users')
 			$scope.login = function(){
 				$resource('/auth/login').save($scope.user, function(res){
 					if(res.status){
-						$rootScope.user = res.json;
+						storage.set('user', angular.toJson(res.json));
 						$rootScope.$broadcast('loggedIn');
 					} else{
 						$mdToast.show({
@@ -52,6 +53,7 @@ angular.module('calocial.users')
 			$scope.logout = function(){
 				$resource('/auth/logout').save(function(res){
 					if(res.status){
+						storage.remove('user');
 						$rootScope.$broadcast('loggedOut');
 					}
 				});
