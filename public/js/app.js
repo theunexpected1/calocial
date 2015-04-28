@@ -9,7 +9,7 @@
 					'hue-2': '500',
 					'hue-3': '700'
 				})
-				.accentPalette('yellow', {
+				.accentPalette('red', {
 					'default': 'A200',
 					'hue-1': 'A100',
 					'hue-2': 'A400'

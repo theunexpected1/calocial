@@ -1,0 +1,9 @@
+body{
+	background: #ececec;
+}
+
+.omnipresent-area{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+}
