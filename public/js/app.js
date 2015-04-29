@@ -1,6 +1,6 @@
 // Angular App
 
-	angular.module('app', ['ngMaterial', 'ngResource', 'calocial.helpers', 'calocial.users'])
+	angular.module('app', ['ngMaterial', 'ngResource', 'calocial.helpers', 'calocial.users', 'calocial.posts'])
 		.config([
 			'$mdThemingProvider',
 			'$stateProvider', 
