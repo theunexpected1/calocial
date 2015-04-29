@@ -28,7 +28,7 @@ module.exports = function(System){
 		type: {
 			type: String,
 			default: 'meeting'
-		}
+		},
 		date: {
 			type: Date,
 			require: true
@@ -43,7 +43,7 @@ module.exports = function(System){
 				type: Number,
 				required: false,
 				default: 0
-			}
+			},
 			date_created: {
 				type: Date,
 				default: Date.now
