@@ -16,7 +16,7 @@ module.exports = function(System){
 		var user = new User(req.body);
 
 		// toDo: Improvise success vs. error responses as system helpers
-		user.save(function(err, user){
+		user.save(function(err){
 			if (err) {
 				System.log.error({error: err});
 				return communication.fail(res, err);
@@ -45,10 +45,10 @@ module.exports = function(System){
 				if(status){
 					return communication.success(res, req.user);
 				}
-				return communication.fail(res, 'Login failed!');
+				return communication.fail(res, null, 'Login failed!');
 			}
 		], function(err){
-			return communication.fail(res, 'Login failed!');
+			return communication.fail(res, err, 'Login failed!');
 		});
 
 	};
