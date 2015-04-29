@@ -5,7 +5,7 @@ module.exports = function(System){
 	var mongoose = require('mongoose'),
 		Post = require('../models/post')(System),
 		communication = System.helpers.communication,
-		postsController = {}
+		postsController = {};
 
 	/**
 	 * Method to create a new post with provided post parameters
