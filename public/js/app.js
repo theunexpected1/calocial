@@ -1,20 +1,33 @@
 // Angular App
 
 	angular.module('app', ['ngMaterial', 'ngResource', 'calocial.helpers', 'calocial.users'])
-		.config(['$mdThemingProvider', function($mdThemingProvider) {
-			$mdThemingProvider.theme('default')
-				.primaryPalette('cyan', {
-					'default': '500',
-					'hue-1': '100',
-					'hue-2': '500',
-					'hue-3': '700'
-				})
-				.accentPalette('red', {
-					'default': 'A200',
-					'hue-1': 'A100',
-					'hue-2': 'A400'
-				});
-		}])
+		.config([
+			'$mdThemingProvider',
+			'$stateProvider', 
+			'$urlRouterProvider',
+			function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
+
+				// Theming
+				$mdThemingProvider.theme('default')
+					.primaryPalette('cyan', {
+						'default': '500',
+						'hue-1': '100',
+						'hue-2': '500',
+						'hue-3': '700'
+					})
+					.accentPalette('red', {
+						'default': 'A200',
+						'hue-1': 'A100',
+						'hue-2': 'A400'
+					});
+
+
+				// Routing
+				// For any unmatched url, redirect to /
+				$urlRouterProvider.otherwise('/');
+
+			}
+		])
 		.controller("appController", [
 			'$scope', 
 			'$location', 
