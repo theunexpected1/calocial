@@ -1,0 +1,10 @@
+body {
+  background: #ececec; }
+
+.omnipresent-area {
+  position: fixed;
+  right: 0;
+  bottom: 0; }
+
+md-whiteframe {
+  background: #fff; }
