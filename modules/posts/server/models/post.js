@@ -19,11 +19,11 @@ module.exports = function(System){
 		},
 		title: {
 			type: String,
-			require: true
+			required: true
 		},
 		description: {
 			type: String,
-			require: false
+			required: false
 		},
 		type: {
 			type: String,
@@ -31,7 +31,7 @@ module.exports = function(System){
 		},
 		date: {
 			type: Date,
-			require: true
+			required: true
 		},
 		participants: [{
 			user: {
