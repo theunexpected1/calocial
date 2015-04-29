@@ -1,4 +1,4 @@
-<div layout="row" flex layout-wrap>
+<div layout="row" flex layout-wrap ng-show="!isGuest" ng-controller="appController">
 	<div layout="row" flex layout-align="center" layout-wrap>
 		<md-card flex="100" flex-gt-md="60">
 			<md-content layout-padding>
@@ -15,7 +15,7 @@
 	</div>
 </div>
 
-<div class="omnipresent-area" layout="row" layout-padding layout-margin>
+<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest" ng-controller="appController">
 	<md-button flex class="md-fab md-accent" aria-label="Create meeting">
 		<md-tooltip md-direction="left">
 			Create a meeting
