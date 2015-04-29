@@ -4,7 +4,8 @@
   "description": "Social network around events, meetings and all things calendar",
   "main": "index.js",
   "scripts": {
-    "test": "git status"
+    "test": "git status",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,10 @@
     "mongoose": "^4.0.1",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-watch": "^0.6.1"
   }
 }
