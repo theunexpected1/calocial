@@ -9,18 +9,17 @@ module.exports = function(System){
 
 	// The User Schema
 	var UserSchema = new Schema({
-		date_created: {
+		created: {
 			type: Date,
 			default: Date.now
 		},
 		username: String,
 		email: {
 			type: String,
-			unique: true,
+			required: true,
 			index: {
-				required: true
+				unique: true
 			}
-			// required: true
 		},
 		name: {
 			type: String,

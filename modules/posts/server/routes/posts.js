@@ -5,6 +5,7 @@ module.exports = function(System){
 	var controller = require('../controllers/posts')(System),
 		router = System.express.Router();
 
+	// Routes
 	router
 		.post('/', controller.create)
 		.get('/', controller.get)

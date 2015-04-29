@@ -8,7 +8,7 @@ module.exports = function(System){
 
 	// The Post Schema
 	var PostSchema = new Schema({
-		date_created: {
+		created: {
 			type: Date,
 			default: Date.now
 		},
@@ -44,7 +44,7 @@ module.exports = function(System){
 				required: false,
 				default: 0
 			},
-			date_created: {
+			created: {
 				type: Date,
 				default: Date.now
 			}

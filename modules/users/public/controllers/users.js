@@ -23,7 +23,7 @@ angular.module('calocial.users')
 						$scope.resetForm();
 					} else{
 						$mdToast.show({
-							template: '<md-toast><span flex>User already exists!!</span></md-toast>',
+							template: '<md-toast><span flex>' + res.message + '</span></md-toast>',
 							hideDelay: 2000
 						});
 					}

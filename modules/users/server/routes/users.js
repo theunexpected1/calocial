@@ -2,16 +2,14 @@
 
 module.exports = function(System){
 	// Modules
-	var userController = require('../controllers/users')(System),
-		userRouter = System.express.Router();
+	var controller = require('../controllers/users')(System),
+		router = System.express.Router();
 	
-	// Define routes here
-	// Create User
-	userRouter.post('/', userController.create);
-
-	// Login User
-	userRouter.post('/login/', userController.login);
-	userRouter.post('/logout/', userController.logout);
+	// Routes
+	router
+		.post('/', controller.create) // Create User
+		.post('/login/', controller.login) // Login User
+		.post('/logout/', controller.logout); // Logout User
 	
-	return userRouter;
+	return router;
 };
