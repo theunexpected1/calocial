@@ -19,7 +19,6 @@ module.exports = function(System){
 		System.log.info('Create user attempt...');
 		var user = new User(req.body);
 
-		// toDo: Improvise success vs. error responses as system helpers
 		user.save(function(err){
 			if (err) {
 				System.log.error({error: err});

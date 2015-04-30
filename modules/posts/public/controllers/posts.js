@@ -8,7 +8,6 @@ angular.module('calocial.posts')
 		'$location',
 		function($rootScope, $scope, $resource, $location){
 			$scope.posts = {};
-			console.log('here');
 			$resource('/meetings').get(function(res){
 				if(res.status){
 					$scope.posts = res.json;
