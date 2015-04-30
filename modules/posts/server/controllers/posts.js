@@ -44,13 +44,17 @@ module.exports = function(System){
 		if(req.params.postId){
 			params._id = req.params.postId;
 		}
-		Post.find(params, function(err, posts){
-			if(err){
-				System.log.error({err: err});
-				return communication.fail(res, err);
-			}
-			return communication.success(res, posts);
-		});
+		
+		Post
+			.find(params)
+			.populate('creator')
+			.exec(function(err, posts){
+				if(err){
+					System.log.error({err: err});
+					return communication.fail(res, err);
+				}
+				return communication.success(res, posts);
+			});
 	};
 
 	return postsController;

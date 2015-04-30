@@ -5,8 +5,14 @@ angular.module('calocial.posts')
 		'$rootScope',
 		'$scope',
 		'$resource',
-		'$location'
+		'$location',
 		function($rootScope, $scope, $resource, $location){
-			
+			$scope.posts = {};
+			console.log('here');
+			$resource('/meetings').get(function(res){
+				if(res.status){
+					$scope.posts = res.json;
+				}
+			});
 		}
 	]);
