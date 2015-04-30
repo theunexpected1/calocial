@@ -25,6 +25,11 @@
 				// Routing
 				// For any unmatched url, redirect to /
 				$urlRouterProvider.otherwise('/');
+				$stateProvider
+					.state('/', {
+						url: '/',
+						templateUrl: '/views/home.html'
+					});
 
 			}
 		])
