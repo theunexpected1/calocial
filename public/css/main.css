@@ -8,3 +8,13 @@ body {
 
 md-whiteframe {
   background: #fff; }
+
+.app-post {
+  cursor: pointer; }
+  .app-post img.author {
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+    margin: -5px;
+    overflow: hidden;
+    background: gainsboro; }
