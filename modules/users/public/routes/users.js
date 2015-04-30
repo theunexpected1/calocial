@@ -6,10 +6,6 @@ angular.module('calocial.users')
 		function($stateProvider){
 
 			$stateProvider
-				.state('/', {
-					url: '/',
-					templateUrl: '/views/home.html'
-				})
 				.state('auth/register', {
 					url: '/auth/register',
 					templateUrl: '/modules/users/public/views/register.html'
