@@ -30,7 +30,7 @@ module.exports = function(System){
 				return communication.fail(res, err, 'There was a problem with registration. Please try again later.');
 			}
 			System.log.info('User created');
-			communication.success(res, user);
+			communication.ok(res, user);
 		});
 	};
 
@@ -57,7 +57,7 @@ module.exports = function(System){
 			},
 			function respond(status, done){
 				if(status){
-					return communication.success(res, req.user);
+					return communication.ok(res, req.user);
 				}
 				return communication.fail(res, null, 'Login failed!');
 			}
@@ -77,7 +77,7 @@ module.exports = function(System){
 		if(req.user){
 			req.logout();
 		}
-		return communication.success(res);
+		return communication.ok(res);
 	};
 
 	return usersController;

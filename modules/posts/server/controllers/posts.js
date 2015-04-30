@@ -29,7 +29,7 @@ module.exports = function(System){
 				System.log.error({err: err});
 				return communication.fail(res, err);
 			}
-			return communication.success(res, post);
+			return communication.ok(res, post);
 		});
 	};
 
@@ -53,7 +53,7 @@ module.exports = function(System){
 					System.log.error({err: err});
 					return communication.fail(res, err);
 				}
-				return communication.success(res, posts);
+				return communication.ok(res, posts);
 			});
 	};
 
