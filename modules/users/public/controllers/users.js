@@ -11,7 +11,6 @@ angular.module('calocial.users')
 		function($rootScope, $scope, $resource, $location, $mdToast, storage){
 			$scope.user = {};
 			$scope.create = function(){
-				console.log($scope.user);
 
 				$resource('/auth/').save($scope.user, function(res){
 					if(res.status){
@@ -23,15 +22,11 @@ angular.module('calocial.users')
 						$scope.resetForm();
 					} else{
 						$mdToast.show({
-							template: '<md-toast><span flex>User already exists!!</span></md-toast>',
+							template: '<md-toast><span flex>' + res.message + '</span></md-toast>',
 							hideDelay: 2000
 						});
 					}
 
-				}, function(err){
-					// toDo: Yet to handle separation of succes vs. error requests
-					// currently, even failure to register (user already exists) will be treated as succesful from the front end.
-					console.log(err);
 				});
 			};
 

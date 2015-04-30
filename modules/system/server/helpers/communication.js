@@ -13,12 +13,12 @@ module.exports = function(System){
 		res.send(response);
 	}
 
-	communication.success = function(res, json, message){
+	communication.ok = function(res, json, message){
 		communication.common(1, res, json, message);
 	}
 
-	communication.fail = function(res, message){
-		communication.common(0, res, null, message);
+	communication.fail = function(res, json, message){
+		communication.common(0, res, json, message);
 	}
 
 	helper = {

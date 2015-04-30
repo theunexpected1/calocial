@@ -3,10 +3,16 @@
 module.exports = function(System){
 	// Add routes here manually
 	// toDo: refactor to add this to configurations / automation
-	var routes = [{
-		module: 'users',
-		root: 'auth'
-	}];
+	var routes = [
+		{
+			module: 'users',
+			root: 'auth'
+		},
+		{
+			module: 'posts',
+			root: 'meetings'
+		}
+	];
 
 	// Include routes for all modules defined
 	routes.forEach(function(route){

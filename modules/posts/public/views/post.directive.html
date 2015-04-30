@@ -1,0 +1,27 @@
+<md-card class="app-post">
+	<md-content layout-padding layout="column" layout-gt-sm="row">
+		<!-- icon -->
+		<!-- <i flex="5" class="fa" ng-class="{'fa-calendar' : post.type=='meeting'}"></i> -->
+		<!-- <md-button class="md-button creator md-primary" href="#">{{post.creator.name}}</md-button> -->
+		<div flex="5">
+			<img class="author" src="" alt="">
+		</div>
+
+		<!-- title -->
+		<span flex="70">{{post.title}}</span>
+		<!-- creator -->
+		<div flex="20">
+			<!-- <md-button class="md-button creator md-primary" href="#">{{post.creator.name}}</md-button> -->
+			<!-- <i class="fa fa-user"></i> 
+			<span>Albert Dias</span> -->
+		</div>
+		<!-- participants -->
+		<i flex="5" class="fa fa-user">
+			<md-tooltip md-direction="left">
+				{{post.participants.length ? post.participants.length + ' participant' + (post.participants.length == 1 ? '' : 's') : 'No participants'}}
+			</md-tooltip>
+			{{post.participants.length}}
+		</i>
+	</md-content>
+
+</md-card>
