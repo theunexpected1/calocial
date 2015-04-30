@@ -1,18 +1,5 @@
 <div layout="row" flex layout-wrap ng-show="!isGuest" ng-controller="appController">
-	<div layout="row" flex layout-align="center" layout-wrap>
-		<md-card flex="100" flex-gt-md="60">
-			<md-content layout-padding>
-				<i flex class="fa fa-calendar"></i>
-				<span flex>2.3 Alpha release meeting</span>
-			</md-content>
-		</md-card>
-		<md-card flex="100" flex-gt-md="60">
-			<md-content layout-padding>
-				<i flex class="fa fa-calendar"></i>
-				<span flex>Team outing ideas discussion</span>
-			</md-content>
-		</md-card>
-	</div>
+	<ng-include flex src="'modules/posts/public/views/posts.html'"></ng-include>
 </div>
 
 <div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest" ng-controller="appController">
