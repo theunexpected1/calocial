@@ -6,7 +6,8 @@ angular.module('calocial.posts')
 		'$scope',
 		'$resource',
 		'$location',
-		function($rootScope, $scope, $resource, $location){
+		'$mdToast', 
+		function($rootScope, $scope, $resource, $location, $mdToast){
 			$scope.posts = {};
 			$scope.post = {};
 			$scope.isCreatingPost = false;
@@ -28,9 +29,17 @@ angular.module('calocial.posts')
 					if(res.status){
 						console.log('post saved');
 						console.log(res.json);
+						$mdToast.show({
+							template: '<md-toast><span flex>New post created!</span></md-toast>',
+							hideDelay: 2000
+						});
 					} else{
 						console.log('error in saving post: ' + res.message);
 						console.log(res.json);
+						$mdToast.show({
+							template: '<md-toast><span flex>You will have to login again.</span></md-toast>',
+							hideDelay: 2000
+						})
 					}
 				});
 			}
