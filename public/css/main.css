@@ -9,6 +9,9 @@ html, body {
 md-whiteframe {
   background: #fff; }
 
+md-card {
+  background: #fff; }
+
 .app-post {
   cursor: pointer; }
   .app-post img.author {
@@ -18,3 +21,9 @@ md-whiteframe {
     margin: -5px;
     overflow: hidden;
     background: gainsboro; }
+
+/**
+ * Buttons
+ */
+md-card .md-button, md-card-content .md-button {
+  margin: 0 0 0 6px; }
