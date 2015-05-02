@@ -1,4 +1,15 @@
 <div ng-controller="PostController" layout="row" flex layout-align="center" layout-wrap>
 	<app-post flex="100" flex-gt-md="60" ng-repeat="post in posts">
 	</app-post>
+
+	<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest">
+		<md-button flex class="md-fab md-accent" aria-label="Create meeting" ng-click="createOrCancelPost()">
+			<md-tooltip md-direction="left" >
+				{{isCreatingPost ? 'Cancel' : 'Create a meeting'}}
+				<!-- Create a meeting -->
+			</md-tooltip>
+			<i class="fa" ng-class="{'fa-remove': isCreatingPost, 'fa-plus' : !isCreatingPost}"></i>
+		</md-button>
+	</div>
+
 </div>
