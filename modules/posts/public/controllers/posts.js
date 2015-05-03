@@ -50,11 +50,20 @@ angular.module('calocial.posts')
 					);
 			};
 
+			/**
+			 * Show the create post dialog or cancel it
+			 * @return {null}
+			 */
 			$scope.createOrCancelPost = function(){
 				$scope.isCreatingPost = !$scope.isCreatingPost;
 			}
 
+			/**
+			 * Show all posts available
+			 * @return {null}
+			 */
 			$scope.getPosts = function(){
+				$scope.clearFilters();
 				$resource('/meetings').get(function(res){
 					if(res.status){
 						$scope.posts = res.json;
@@ -62,6 +71,10 @@ angular.module('calocial.posts')
 				});
 			}
 
+			/**
+			 * Request to create a new post
+			 * @return {null}
+			 */
 			$scope.create = function(){
 				$resource('/meetings').save($scope.post, function(res){
 					if(res.status){
@@ -87,7 +100,15 @@ angular.module('calocial.posts')
 				});
 			}
 
+			/**
+			 * Clear search filters
+			 * @return {null}
+			 */
+			$scope.clearFilters = function(){
+				$scope.searchKeyword = '';
+			};
 
+			// Initial call to show all posts
 			$scope.getPosts();
 		}
 	]);
