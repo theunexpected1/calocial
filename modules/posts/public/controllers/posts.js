@@ -6,11 +6,48 @@ angular.module('calocial.posts')
 		'$scope',
 		'$resource',
 		'$location',
-		'$mdToast', 
-		function($rootScope, $scope, $resource, $location, $mdToast){
+		'$timeout',
+		'$mdToast',
+		'postsSearch',
+		function($rootScope, $scope, $resource, $location, $timeout, $mdToast, postsSearch){
 			$scope.posts = {};
 			$scope.post = {};
+			$scope.searchKeyword = '';
 			$scope.isCreatingPost = false;
+			$scope.isSearchingPosts = false;
+
+			/**
+			 * Search for posts on changing keywords
+			 * @return {null}
+			 */
+			$scope.keywordChanged = function(){
+				$scope.isSearchingPosts = true;
+
+				// Clear search in case of no keywords
+				if(!$scope.searchKeyword){
+					$scope.getPosts();
+					$scope.isSearchingPosts = false;
+					return;
+				}
+
+				// Search by keyword service call
+				postsSearch
+					.searchByKeyword($scope.searchKeyword)
+					.then(
+						function(res){
+							$scope.posts = res.json;
+							
+							// Delay to show searching loader for a minimum duration
+							$timeout(function(){
+								$scope.isSearchingPosts = false;
+							}, 100);
+						},
+						function(res){
+							console.log('fail:');
+							console.log(res);
+						}
+					);
+			};
 
 			$scope.createOrCancelPost = function(){
 				$scope.isCreatingPost = !$scope.isCreatingPost;

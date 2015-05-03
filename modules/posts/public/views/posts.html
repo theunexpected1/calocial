@@ -1,4 +1,10 @@
 <div ng-controller="PostController" layout="row" flex layout-align="center" layout-wrap>
+	<!-- search posts -->
+	<div flex="100" flex-gt-md="60" layout-padding>
+		<md-input-container md-no-float class="md-accent">
+			<input ng-model="searchKeyword" placeholder="Search meetings" type="text" ng-change="keywordChanged()" ng-model-options="{debounce: 400}">
+		</md-input-container>
+	</div>
 
 	<!-- create new post form-->
 	<div flex="100"  flex-gt-md="60"  ng-show="isCreatingPost">
@@ -38,8 +44,19 @@
 	</div>
 	
 	<!-- latest posts -->
-	<app-post flex="100" flex-gt-md="60" ng-repeat="post in posts | orderBy: '-created'">
+	<div flex="100" flex-gt-md="60" ng-show="isSearchingPosts" layout-padding>
+		<md-progress-linear md-mode="indeterminate"></md-progress-linear>
+	</div>
+
+	<app-post flex="100" flex-gt-md="60" ng-repeat="post in posts | orderBy: '-created'" ng-show="!isSearchingPosts">
 	</app-post>
+	<div flex="100" flex-gt-md="60" ng-show="!posts.length">
+		<md-card class="app-post">
+			<md-card-content layout-padding>
+				Sorry, no meetings to display
+			</md-card-content>
+		</md-card>
+	</div>
 
 	<!-- create new post link -->
 	<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest && !isCreatingPost">
