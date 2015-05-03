@@ -30,6 +30,7 @@ public/components
 # Project related files
 calocial.sublime-project
 calocial.sublime-workspace
+psd
 
 # sass generated cache files
 .sass-cache
