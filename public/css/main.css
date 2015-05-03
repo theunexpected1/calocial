@@ -12,18 +12,28 @@ md-whiteframe {
 md-card {
   background: #fff; }
 
-.app-post {
+app-post {
   cursor: pointer; }
-  .app-post img.author {
-    width: 32px;
-    height: 32px;
+  app-post h4 {
+    margin: 0; }
+  app-post .title, app-post .date, app-post .time {
+    margin: 0;
+    font-weight: normal; }
+  app-post .date, app-post .time {
+    font-size: 12px; }
+  app-post .title {
+    margin-bottom: 7px;
+    padding: 0 6px; }
+  app-post .date {
+    margin-bottom: 2px; }
+  app-post img.author {
+    width: 64px;
+    height: 64px;
     border-radius: 50px;
-    margin: -5px;
-    overflow: hidden;
-    background: gainsboro; }
+    overflow: hidden; }
 
 /**
  * Buttons
  */
-md-card .md-button, md-card-content .md-button {
+md-card .md-actions .md-button, md-card-content .md-actions .md-button {
   margin: 0 0 0 6px; }
