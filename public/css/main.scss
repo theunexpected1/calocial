@@ -1,4 +1,4 @@
-body{
+html,body{
 	background: #ececec;
 }
 
@@ -11,15 +11,43 @@ md-whiteframe{
 	background: #fff;
 }
 
-.app-post{
+md-card{
+	background: #fff;
+}
+
+app-post{
 	cursor: pointer;
-	img.author{
-		width: 32px;
-		height: 32px;
-		border-radius: 50px;
-		margin: -5px;
-		overflow: hidden;
-		background: gainsboro;
+	h4{
+		margin: 0;
 	}
-	
+	.title, .date, .time{
+		margin: 0;
+		font-weight: normal;
+	}
+	.date, .time{
+		font-size: 12px;
+	}
+	.title{
+		margin-bottom: 7px;
+		padding: 0 6px;
+	}
+	.date{
+		margin-bottom: 2px;
+	}
+
+	img.author{
+		width: 64px;
+		height: 64px;
+		border-radius: 50px;
+		overflow: hidden;
+	}
+}
+
+/**
+ * Buttons
+ */
+md-card, md-card-content{
+	.md-actions .md-button{
+		margin: 0 0 0 6px;
+	}
 }

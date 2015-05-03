@@ -1,4 +1,55 @@
 <div ng-controller="PostController" layout="row" flex layout-align="center" layout-wrap>
-	<app-post flex="100" flex-gt-md="60" ng-repeat="post in posts">
+
+	<!-- create new post form-->
+	<div flex="100"  flex-gt-md="60"  ng-show="isCreatingPost">
+		
+		<md-card flex="100" flex-gt-md="60">
+			<md-content layout="column" layout-gt-sm="row" layout-wrap>
+				<md-toolbar>
+					<span class="md-toolbar-tools"> New meeting </span>
+				</md-toolbar>
+				<div flex layout="column" layout-padding>
+					<form name="postForm" ng-submit="create()" class="form" layout="column" layout-padding>
+						<div layout="row">
+							<md-input-container flex>
+								<label> Meeting title</label>
+								<input ng-model="post.title" auto-focus="isCreatingPost" md-maxlength="140" required placeholder="Something like: Release 2.1 planning">
+							</md-input-container>
+						</div>
+						<div layout="row">
+							<md-input-container flex="40">
+								<label> Schedule meeting on</label>
+								<input ng-model="post.date" type="datetime-local" required>
+							</md-input-container>
+							<md-input-container flex="60">
+								<label> Attendees</label>
+								<input ng-model="post.participants">
+							</md-input-container>
+						</div>
+						<div class="md-actions" layout="row" layout-align="end end">
+							<md-button flex="10" type="button" ng-click="createOrCancelPost()" class="md-raised md-button">Cancel</md-button>
+							<md-button flex="10" type="submit" class="md-accent md-raised md-button">Submit</md-button>
+						</div>
+					</form>
+				</div>
+			</md-content>
+		</md-card>
+
+	</div>
+	
+	<!-- latest posts -->
+	<app-post flex="100" flex-gt-md="60" ng-repeat="post in posts | orderBy: '-created'">
 	</app-post>
+
+	<!-- create new post link -->
+	<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest && !isCreatingPost">
+		<md-button flex class="md-fab md-accent" aria-label="Create meeting" ng-click="createOrCancelPost()">
+			<md-tooltip md-direction="left" >
+				<!-- {{isCreatingPost ? 'Cancel' : 'Create a meeting'}} -->
+				Create a meeting
+			</md-tooltip>
+			<i class="fa" ng-class="{'fa-remove': isCreatingPost, 'fa-plus' : !isCreatingPost}"></i>
+		</md-button>
+	</div>
+
 </div>

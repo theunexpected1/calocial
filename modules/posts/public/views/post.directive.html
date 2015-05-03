@@ -1,27 +1,41 @@
 <md-card class="app-post">
-	<md-content layout-padding layout="column" layout-gt-sm="row">
+	<md-card-content layout-padding layout="column" layout-gt-sm="row">
 		<!-- icon -->
 		<!-- <i flex="5" class="fa" ng-class="{'fa-calendar' : post.type=='meeting'}"></i> -->
 		<!-- <md-button class="md-button creator md-primary" href="#">{{post.creator.name}}</md-button> -->
-		<div flex="5">
-			<img class="author" src="" alt="">
+		<div flex="20" flex-gt-lg="10">
+			<img class="author" ng-src="{{post.creator.picture || '/images/profile.jpg'}}" alt="">
 		</div>
 
 		<!-- title -->
-		<span flex="70">{{post.title}}</span>
-		<!-- creator -->
-		<div flex="20">
-			<!-- <md-button class="md-button creator md-primary" href="#">{{post.creator.name}}</md-button> -->
-			<!-- <i class="fa fa-user"></i> 
-			<span>Albert Dias</span> -->
+		<div flex="60" flex-gt-lg="70">
+			<md-button class="creator md-primary">{{post.creator.name}}</md-button>
+			<h3 class="title">{{post.title}}</h3>		
 		</div>
+
 		<!-- participants -->
-		<i flex="5" class="fa fa-user">
+		<div ng-show-gt-md flex></div>
+		<div flex="20" flex-gt-lg="15" layout="row">
+			<h4 flex="20" layout="column">
+				<i flex class="fa fa-calendar"></i>
+				<i flex class="fa fa-user"></i>
+			</h4>
+			<div flex layout="column">
+				<div flex>
+					<h4 class="date">{{post.date | date:'EEE, d MMM'}}</h4>
+					<h4 class="time">{{post.date | date:'hh:m a'}}</h4>
+				</div>
+				<div class="participants" flex>
+					{{post.participants.length}}
+				</div>
+			</div>
+		</div>
+		<!-- <i flex="10" class="fa fa-user">
 			<md-tooltip md-direction="left">
 				{{post.participants.length ? post.participants.length + ' participant' + (post.participants.length == 1 ? '' : 's') : 'No participants'}}
 			</md-tooltip>
 			{{post.participants.length}}
-		</i>
-	</md-content>
+		</i> -->
+	</md-card-content>
 
 </md-card>

@@ -4,6 +4,7 @@
   "description": "Social network around events, meetings and all things calendar",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "git status",
     "postinstall": "./node_modules/bower/bin/bower install"
   },

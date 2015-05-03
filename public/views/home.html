@@ -1,12 +1,3 @@
 <div layout="row" flex layout-wrap ng-show="!isGuest" ng-controller="appController">
 	<ng-include flex src="'modules/posts/public/views/posts.html'"></ng-include>
 </div>
-
-<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest" ng-controller="appController">
-	<md-button flex class="md-fab md-accent" aria-label="Create meeting">
-		<md-tooltip md-direction="left">
-			Create a meeting
-		</md-tooltip>
-		<i class="fa fa-plus"></i>
-	</md-button>
-</div>

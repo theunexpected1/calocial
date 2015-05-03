@@ -11,15 +11,18 @@
 		<!-- Toolbar / Header -->
 		<md-toolbar layout="row" flex class="md-primary">
 			<div class="md-toolbar-tools">
-				<!-- Menu button -->
-				<md-button class="md-icon-button" aria-label="Menu">
-					<span class="fa fa-lg fa-bars"></span>
-				</md-button>
-				<!-- Title -->
-				<h3>
-					<a ui-sref="/">Calocial</a>
-				</h3>
-				<span flex></span>
+				<div flex="20" flex-sm="40" class="actions" layout="row">
+					<md-button class="md-icon-button" aria-label="Menu"> <!-- Menu button -->
+						<span class="fa fa-lg fa-bars"></span>
+					</md-button>
+					<h3> <a ui-sref="/">Calocial</a> </h3> <!-- Title -->
+				</div>
+
+				<div flex show-sm></div>
+				<div flex="60" layout-padding hide-sm>
+				</div>
+
+				<div flex="20" class="actions" layout="row" layout-align="end end">
 				<!-- Register / Login links-->
 					<md-button ng-show="isGuest" ui-sref="auth/register">Register</md-button>
 					<md-button ng-show="isGuest" ui-sref="auth/login" class="md-raised md-button md-default-theme">Login</md-button>
@@ -27,6 +30,7 @@
 						<md-tooltip> Logout? </md-tooltip>
 						{{user.name}}
 					</md-button>
+				</div>
 
 			</div>
 		</md-toolbar>
