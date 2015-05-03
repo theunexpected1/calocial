@@ -17,11 +17,11 @@
 							</md-input-container>
 						</div>
 						<div layout="row">
-							<md-input-container flex="20">
-								<label> Date of meeting</label>
-								<input ng-model="post.date" type="date" required>
+							<md-input-container flex="40">
+								<label> Schedule meeting on</label>
+								<input ng-model="post.date" type="datetime-local" required>
 							</md-input-container>
-							<md-input-container flex="80">
+							<md-input-container flex="60">
 								<label> Attendees</label>
 								<input ng-model="post.participants">
 							</md-input-container>
