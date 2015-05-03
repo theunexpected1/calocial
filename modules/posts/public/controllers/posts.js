@@ -35,8 +35,9 @@ angular.module('calocial.posts')
 					.searchByKeyword($scope.searchKeyword)
 					.then(
 						function(res){
-							$scope.posts = res.json;
-							
+							if(res.status){
+								$scope.posts = res.json;
+							}
 							// Delay to show searching loader for a minimum duration
 							$timeout(function(){
 								$scope.isSearchingPosts = false;
