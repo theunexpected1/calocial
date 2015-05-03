@@ -6,17 +6,64 @@ angular.module('calocial.posts')
 		'$scope',
 		'$resource',
 		'$location',
-		'$mdToast', 
-		function($rootScope, $scope, $resource, $location, $mdToast){
+		'$timeout',
+		'$mdToast',
+		'postsSearch',
+		function($rootScope, $scope, $resource, $location, $timeout, $mdToast, postsSearch){
 			$scope.posts = {};
 			$scope.post = {};
+			$scope.searchKeyword = '';
 			$scope.isCreatingPost = false;
+			$scope.isSearchingPosts = false;
 
+			/**
+			 * Search for posts on changing keywords
+			 * @return {null}
+			 */
+			$scope.keywordChanged = function(){
+				$scope.isSearchingPosts = true;
+
+				// Clear search in case of no keywords
+				if(!$scope.searchKeyword){
+					$scope.getPosts();
+					$scope.isSearchingPosts = false;
+					return;
+				}
+
+				// Search by keyword service call
+				postsSearch
+					.searchByKeyword($scope.searchKeyword)
+					.then(
+						function(res){
+							if(res.status){
+								$scope.posts = res.json;
+							}
+							// Delay to show searching loader for a minimum duration
+							$timeout(function(){
+								$scope.isSearchingPosts = false;
+							}, 100);
+						},
+						function(res){
+							console.log('fail:');
+							console.log(res);
+						}
+					);
+			};
+
+			/**
+			 * Show the create post dialog or cancel it
+			 * @return {null}
+			 */
 			$scope.createOrCancelPost = function(){
 				$scope.isCreatingPost = !$scope.isCreatingPost;
 			}
 
+			/**
+			 * Show all posts available
+			 * @return {null}
+			 */
 			$scope.getPosts = function(){
+				$scope.clearFilters();
 				$resource('/meetings').get(function(res){
 					if(res.status){
 						$scope.posts = res.json;
@@ -24,6 +71,10 @@ angular.module('calocial.posts')
 				});
 			}
 
+			/**
+			 * Request to create a new post
+			 * @return {null}
+			 */
 			$scope.create = function(){
 				$resource('/meetings').save($scope.post, function(res){
 					if(res.status){
@@ -49,7 +100,15 @@ angular.module('calocial.posts')
 				});
 			}
 
+			/**
+			 * Clear search filters
+			 * @return {null}
+			 */
+			$scope.clearFilters = function(){
+				$scope.searchKeyword = '';
+			};
 
+			// Initial call to show all posts
 			$scope.getPosts();
 		}
 	]);

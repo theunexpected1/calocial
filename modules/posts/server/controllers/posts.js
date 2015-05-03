@@ -7,6 +7,7 @@ module.exports = function(System){
 		communication = System.helpers.communication,
 		postsController = {};
 
+	// Methods
 	/**
 	 * Method to create a new post with provided post parameters
 	 * @param  {Object} req Request Object
@@ -34,7 +35,7 @@ module.exports = function(System){
 	};
 
 	/**
-	 * Method to get a single post or list of posts depending on provided post parameters
+	 * Method to get a single post or list of posts depending on postId
 	 * @param  {Object} req Request Object
 	 * @param  {Object} res Response Object
 	 * @return {Object}     Communication response object
@@ -44,7 +45,32 @@ module.exports = function(System){
 		if(req.params.postId){
 			params._id = req.params.postId;
 		}
-		
+		return postsController.query(req, res, params);
+	};
+
+	/**
+	 * Method to get find posts depending on keyword for search
+	 * @param  {Object} req Request Object
+	 * @param  {Object} res Response Object
+	 * @return {Object}     Communication response object
+	 */
+	postsController.search = function(req, res){
+		// Currently searching titles of posts only
+		var params ={};
+		if(req.params.keyword){
+			params.title = new RegExp(req.params.keyword, 'i');
+		}
+		return postsController.query(req, res, params);
+	};
+
+	/**
+	 * Method to query posts with the given parameters of search
+	 * @param  {Object} req    Request Object
+	 * @param  {Object} res    Response Object
+	 * @param  {Object} params Parameters key-value pairs as passed by other methods of this controller (usually schema keys and their corresponding value to search)
+	 * @return {Object}        Communication response object
+	 */
+	postsController.query = function(req, res, params){
 		Post
 			.find(params)
 			.populate('creator')

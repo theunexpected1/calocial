@@ -9,7 +9,8 @@ module.exports = function(System){
 	router
 		.post('/', controller.create)
 		.get('/', controller.get)
-		.get('/:postId', controller.get);
+		.get('/:postId', controller.get)
+		.get('/search/:keyword', controller.search);
 
 	return router;
 };
