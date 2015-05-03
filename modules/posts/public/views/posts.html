@@ -6,9 +6,8 @@
 		</md-input-container>
 	</div>
 
-	<!-- create new post form-->
+	<!-- create new post-->
 	<div flex="100"  flex-gt-md="60"  ng-show="isCreatingPost">
-		
 		<md-card flex="100" flex-gt-md="60">
 			<md-content layout="column" layout-gt-sm="row" layout-wrap>
 				<md-toolbar>
@@ -40,9 +39,19 @@
 				</div>
 			</md-content>
 		</md-card>
-
 	</div>
 	
+	<!-- create new post link -->
+	<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest && !isCreatingPost">
+		<md-button flex class="md-fab md-accent" aria-label="Create meeting" ng-click="createOrCancelPost()">
+			<md-tooltip md-direction="left" >
+				<!-- {{isCreatingPost ? 'Cancel' : 'Create a meeting'}} -->
+				Create a meeting
+			</md-tooltip>
+			<i class="fa" ng-class="{'fa-remove': isCreatingPost, 'fa-plus' : !isCreatingPost}"></i>
+		</md-button>
+	</div>
+
 	<!-- latest posts -->
 	<div flex="100" flex-gt-md="60" ng-show="isSearchingPosts" layout-padding>
 		<md-progress-linear md-mode="indeterminate"></md-progress-linear>
@@ -56,17 +65,6 @@
 				Sorry, no meetings to display
 			</md-card-content>
 		</md-card>
-	</div>
-
-	<!-- create new post link -->
-	<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest && !isCreatingPost">
-		<md-button flex class="md-fab md-accent" aria-label="Create meeting" ng-click="createOrCancelPost()">
-			<md-tooltip md-direction="left" >
-				<!-- {{isCreatingPost ? 'Cancel' : 'Create a meeting'}} -->
-				Create a meeting
-			</md-tooltip>
-			<i class="fa" ng-class="{'fa-remove': isCreatingPost, 'fa-plus' : !isCreatingPost}"></i>
-		</md-button>
 	</div>
 
 </div>
