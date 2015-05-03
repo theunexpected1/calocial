@@ -17,12 +17,6 @@
 							</md-input-container>
 						</div>
 						<div layout="row">
-							<md-input-container flex>
-								<label> Description</label>
-								<textarea ng-model="post.description" ng-maxlength="500" required placeholder="Short description. Remember, this is not agenda."></textarea>
-							</md-input-container>
-						</div>
-						<div layout="row">
 							<md-input-container flex="20">
 								<label> Date of meeting</label>
 								<input ng-model="post.date" type="date" required>
@@ -44,15 +38,15 @@
 	</div>
 	
 	<!-- latest posts -->
-	<app-post flex="100" flex-gt-md="60" ng-repeat="post in posts">
+	<app-post flex="100" flex-gt-md="60" ng-repeat="post in posts | orderBy: '-created'">
 	</app-post>
 
 	<!-- create new post link -->
-	<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest">
+	<div class="omnipresent-area" layout="row" layout-padding layout-margin ng-show="!isGuest && !isCreatingPost">
 		<md-button flex class="md-fab md-accent" aria-label="Create meeting" ng-click="createOrCancelPost()">
 			<md-tooltip md-direction="left" >
-				{{isCreatingPost ? 'Cancel' : 'Create a meeting'}}
-				<!-- Create a meeting -->
+				<!-- {{isCreatingPost ? 'Cancel' : 'Create a meeting'}} -->
+				Create a meeting
 			</md-tooltip>
 			<i class="fa" ng-class="{'fa-remove': isCreatingPost, 'fa-plus' : !isCreatingPost}"></i>
 		</md-button>

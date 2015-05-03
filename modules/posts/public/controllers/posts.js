@@ -28,14 +28,19 @@ angular.module('calocial.posts')
 				$resource('/meetings').save($scope.post, function(res){
 					if(res.status){
 						console.log('post saved');
-						console.log(res.json);
 						$mdToast.show({
 							template: '<md-toast><span flex>New post created!</span></md-toast>',
 							hideDelay: 2000
 						});
+						$scope.isCreatingPost = false;
+						$scope.postForm.$setPristine();
+						$scope.postForm.$setUntouched();
+						
+						// Refresh list
+						$scope.getPosts();
+
 					} else{
 						console.log('error in saving post: ' + res.message);
-						console.log(res.json);
 						$mdToast.show({
 							template: '<md-toast><span flex>You will have to login again.</span></md-toast>',
 							hideDelay: 2000
