@@ -33,6 +33,25 @@ module.exports = function(System){
 		});
 	};
 
+	usersController.get = function(req, res){
+		var params = {};
+		if(req.params.userId){
+			params._id = req.params.userId;
+			
+			User
+				.findOne(params)
+				.exec(function(err, user){
+					if(err){
+						return communication.fail(res, err, 'User not found');
+					}
+					return communication.ok(res, user);
+				});
+		} else{
+			return communication.fail(res, null, 'User not found')
+		}
+		
+	};
+
 	/**
 	 * Method to login user
 	 * @param  {Object} req Request Object

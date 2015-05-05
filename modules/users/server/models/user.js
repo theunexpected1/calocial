@@ -25,6 +25,7 @@ module.exports = function(System){
 			type: String,
 			required: true
 		},
+		picture: String,
 		password: String,
 		password_salt: String
 	});
@@ -63,8 +64,24 @@ module.exports = function(System){
 	});
 
 	// User methods
+	/**
+	 * Check validity of password
+	 * @param  {String}  password Password to test against
+	 * @return {Boolean}          True if valid, else false
+	 */
 	UserSchema.methods.isPasswordValid = function (password) {
 		return bcrypt.compareSync(password, this.password);
+	};
+
+	/**
+	 * Eliminate critical information before providing the user model
+	 * @return {Object} User model
+	 */
+	UserSchema.methods.toJSON = function(){
+		var userObject = this.toObject();
+		delete userObject.password;
+		delete userObject.password_salt;
+		return userObject;
 	};
 
 	return mongoose.model('User', UserSchema);
