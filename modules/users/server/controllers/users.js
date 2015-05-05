@@ -10,7 +10,7 @@ module.exports = function(System){
 		usersController = {};
 
 	/**
-	 * Method to register user 
+	 * Register user 
 	 * @param  {Object} req Request Object
 	 * @param  {Object} res Response Object
 	 * @return {Object}     Communication response object
@@ -33,11 +33,16 @@ module.exports = function(System){
 		});
 	};
 
+	/**
+	 * Get a user by _id
+	 * @param  {Object} req Request Object
+	 * @param  {Object} res Response Object
+	 * @return {Object}     Communication response object
+	 */
 	usersController.get = function(req, res){
 		var params = {};
 		if(req.params.userId){
-			params._id = req.params.userId;
-			
+			params._id = req.params.userId;			
 			User
 				.findOne(params)
 				.exec(function(err, user){
@@ -53,7 +58,7 @@ module.exports = function(System){
 	};
 
 	/**
-	 * Method to login user
+	 * Login user
 	 * @param  {Object} req Request Object
 	 * @param  {Object} res Response Object
 	 * @return {Object}     Communication response object
@@ -86,7 +91,7 @@ module.exports = function(System){
 	};
 
 	/**
-	 * Method to logout user
+	 * Logout user
 	 * @param  {Object} req Request Object
 	 * @param  {Object} res Response Object
 	 * @return {Object}     Communication response object
