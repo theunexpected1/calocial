@@ -15,8 +15,10 @@ angular.module('calocial.users')
 					templateUrl: '/modules/users/public/views/login.html'
 				})
 				.state('profile', {
-					url: '/profile',
-					templateUrl: '/modules/users/public/views/profile.html'
+					url: '/profile/:userId',
+					templateUrl: function($stateParams){
+						return '/modules/users/public/views/profile.html'
+					}
 				});
 		}
 	]);
