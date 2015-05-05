@@ -35,5 +35,8 @@ app-post {
 /**
  * Buttons
  */
+.button-spaced {
+  margin: 0 0 0 6px; }
+
 md-card .md-actions .md-button, md-card-content .md-actions .md-button {
   margin: 0 0 0 6px; }

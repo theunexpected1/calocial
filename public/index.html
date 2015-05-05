@@ -25,11 +25,12 @@
 
 				<div flex="20" class="actions" layout="row" layout-align="end end">
 				<!-- Register / Login links-->
-					<md-button ng-show="isGuest" ui-sref="auth/register">Register</md-button>
-					<md-button ng-show="isGuest" ui-sref="auth/login" class="md-raised md-button md-default-theme">Login</md-button>
-					<md-button ng-show="!isGuest" ng-controller="UserController" ng-click="logout()" class="md-raised md-button md-default-theme">
-						<md-tooltip> Logout? </md-tooltip>
-						{{user.name}}
+					<md-button ng-show="isGuest" ui-sref="register">Register</md-button>
+					<md-button ng-show="isGuest" ui-sref="login" class="md-raised md-button md-default-theme">Login</md-button>
+					<md-button ng-show="!isGuest" ng-controller="UserController" ui-sref="profile" class="md-raised md-button button-spaced">{{user.name}}</md-button>
+					<md-button ng-show="!isGuest" ng-controller="UserController" ng-click="logout()" class="md-raised md-button button-spaced">
+						<md-tooltip> Logout </md-tooltip>
+						<i class="fa fa-sign-out"></i>
 					</md-button>
 				</div>
 
