@@ -1,4 +1,4 @@
-// Users Module
+// Users Controller
 
 angular.module('calocial.users')
 	.controller('UserController', [
@@ -9,10 +9,10 @@ angular.module('calocial.users')
 		'$mdToast', 
 		'storage',
 		function($rootScope, $scope, $resource, $location, $mdToast, storage){
-			$scope.user = {};
+			$scope.userModel = {};
 			$scope.create = function(){
 
-				$resource('/auth/').save($scope.user, function(res){
+				$resource('/auth/').save($scope.userModel, function(res){
 					if(res.status){
 						// toDo: Improvise toasts as system helpers
 						$mdToast.show({
@@ -31,7 +31,7 @@ angular.module('calocial.users')
 			};
 
 			$scope.login = function(){
-				$resource('/auth/login').save($scope.user, function(res){
+				$resource('/auth/login').save($scope.userModel, function(res){
 					if(res.status){
 						storage.set('user', angular.toJson(res.json));
 						$rootScope.$broadcast('loggedIn');
@@ -55,7 +55,7 @@ angular.module('calocial.users')
 			}
 			
 			$scope.resetForm = function(){
-				$scope.user = {};
+				$scope.userModel = {};
 				$scope.userForm.$setPristine();
 				$scope.userForm.$setUntouched();
 			}
