@@ -25,7 +25,7 @@ module.exports = function(System){
 			type: String,
 			required: true
 		},
-		picture: String,
+		avatar: String,
 		password: String,
 		password_salt: String
 	});
@@ -62,6 +62,10 @@ module.exports = function(System){
 			}
 		});
 	});
+
+	///////////
+	// User //
+	///////////
 
 	// User methods
 	/**
