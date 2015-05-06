@@ -8,6 +8,7 @@ var express = require('express'),
 	passport = require('passport'),
 	expressSession = require('express-session'),
 	fs = require('fs'),
+	multer = require('multer'),
 	dbConfig = {
 		url: 'mongodb://localhost/calocial'
 	},
@@ -41,6 +42,8 @@ app.use('/modules', express.static(__dirname + '/modules'));
 app.use(expressSession({secret: 'calocial'}));
 app.use(passport.initialize()); // Middleware for user authentication / passport
 app.use(passport.session());
+app.use(multer({ dest: './uploads/'}));
+
 
 // Database
 db = mongoose.connect(dbConfig.url);

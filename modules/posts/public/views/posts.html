@@ -1,13 +1,13 @@
 <div ng-controller="PostController" layout="row" flex layout-align="center" layout-wrap>
 	<!-- search posts -->
-	<div flex="100" flex-gt-md="60" layout-padding>
+	<div flex="100" flex-gt-md="60" layout-padding layout-margin ng-hide="isCreatingPost" class="search-posts">
 		<md-input-container md-no-float class="md-accent">
 			<input ng-model="searchKeyword" placeholder="Search meetings" type="text" ng-change="keywordChanged()" ng-model-options="{debounce: 400}">
 		</md-input-container>
 	</div>
 
 	<!-- create new post-->
-	<div flex="100"  flex-gt-md="60"  ng-show="isCreatingPost">
+	<div flex="100"  flex-gt-md="60" ng-show="isCreatingPost" layout-margin>
 		<md-card flex="100" flex-gt-md="60">
 			<md-content layout="column" layout-gt-sm="row" layout-wrap>
 				<md-toolbar>
@@ -57,8 +57,11 @@
 		<md-progress-linear md-mode="indeterminate"></md-progress-linear>
 	</div>
 
-	<app-post flex="100" flex-gt-md="60" ng-repeat="post in posts | orderBy: '-created'" ng-show="!isSearchingPosts">
-	</app-post>
+	<div flex="100" flex-gt-md="60">
+		<app-post flex="100" ng-repeat="post in posts | orderBy: '-created'" ng-show="!isSearchingPosts">
+		</app-post>
+	</div>
+
 	<div flex="100" flex-gt-md="60" ng-show="!posts.length">
 		<md-card class="app-post">
 			<md-card-content layout-padding>
