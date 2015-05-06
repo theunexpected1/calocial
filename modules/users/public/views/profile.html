@@ -1,0 +1,20 @@
+
+	<div layout="row" flex="100" layout-align="center center" ng-controller="ProfileController">
+		<div class="app-profile" layout="column" flex>
+			<div flex class="hero-container" layout="column">
+				<div flex class="hero">
+					<img src="/images/hero.jpg"  alt="hero">
+				</div>
+				<div flex class="hero-avatar-container" layout="column" layout-align="center center">
+					<!-- toDo: edit profile picture link -->
+					<div class="hero-avatar" ng-class="{'is-editable': (user._id == profile._id)}">
+						<img ng-src="{{profile.avatar || '/images/profile.jpg'}}" alt="">
+						<md-tooltip md-direction="top">{{(user._id == profile._id) ? user.name : profile.name}}</md-tooltip>
+					</div>
+					<div flex class="profile-name">
+						<h1> {{profile.name}} </h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -6,13 +6,19 @@ angular.module('calocial.users')
 		function($stateProvider){
 
 			$stateProvider
-				.state('auth/register', {
-					url: '/auth/register',
+				.state('register', {
+					url: '/register',
 					templateUrl: '/modules/users/public/views/register.html'
 				})
-				.state('auth/login', {
-					url: '/auth/login',
+				.state('login', {
+					url: '/login',
 					templateUrl: '/modules/users/public/views/login.html'
 				})
+				.state('profile', {
+					url: '/profile/:userId',
+					templateUrl: function($stateParams){
+						return '/modules/users/public/views/profile.html'
+					}
+				});
 		}
 	]);

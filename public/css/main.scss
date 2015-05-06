@@ -1,5 +1,13 @@
+$primary: #00BCD4;
+$accent: #FF5252;
+$tertiary: #f8f899;
+
 html,body{
-	background: #ececec;
+	background: #f5f8fa;
+}
+
+.header{
+	background: #fff;
 }
 
 .omnipresent-area{
@@ -15,6 +23,18 @@ md-card{
 	background: #fff;
 }
 
+/**
+ * Posts module
+ */
+.search-posts{
+	md-input-container{
+		padding-bottom: 0;
+	}
+}
+
+/**
+ * Post directive
+ */
 app-post{
 	cursor: pointer;
 	h4{
@@ -43,9 +63,49 @@ app-post{
 	}
 }
 
+
+/**
+ * Profile directive
+ */
+.app-profile{
+	margin: 0;
+	
+	.hero-container{
+		.hero{
+			height: 360px;
+			overflow: hidden;
+			img{
+				width: 100%;
+				background: $tertiary;
+			}
+		}
+		.hero-avatar-container{
+			margin-top: -60px;
+			.hero-avatar{
+				border-radius: 60px;
+				overflow: hidden;
+				box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+				height: 120px;
+				overflow: hidden;
+				&.is-editable{
+					cursor: pointer;
+				}
+				img{
+					height: 100%;
+				}
+			}
+		}
+
+	}
+}
+
 /**
  * Buttons
  */
+.button-spaced{
+	margin: 0 0 0 6px;
+}
+
 md-card, md-card-content{
 	.md-actions .md-button{
 		margin: 0 0 0 6px;

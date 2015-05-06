@@ -9,34 +9,36 @@
 <body ng-app="app">
 	<div ng-controller="appController">
 		<!-- Toolbar / Header -->
-		<md-toolbar layout="row" flex class="md-primary">
-			<div class="md-toolbar-tools">
+		<md-toolbar layout="row" flex class="header" md-theme="toolbar" layout-align="center center">
+			<div class="md-toolbar-tools" flex="100" flex-gt-md="60">
 				<div flex="20" flex-sm="40" class="actions" layout="row">
 					<md-button class="md-icon-button" aria-label="Menu"> <!-- Menu button -->
 						<span class="fa fa-lg fa-bars"></span>
 					</md-button>
-					<h3> <a ui-sref="/">Calocial</a> </h3> <!-- Title -->
+					<h4> <a ui-sref="/">Calocial</a> </h4> <!-- Title -->
 				</div>
 
 				<div flex show-sm></div>
-				<div flex="60" layout-padding>
+				<div flex="60" hide-sm layout-padding>
 					
 				</div>
 
-				<div flex="20" class="actions" layout="row" layout-align="end end">
-				<!-- Register / Login links-->
-					<md-button ng-show="isGuest" ui-sref="auth/register">Register</md-button>
-					<md-button ng-show="isGuest" ui-sref="auth/login" class="md-raised md-button md-default-theme">Login</md-button>
-					<md-button ng-show="!isGuest" ng-controller="UserController" ng-click="logout()" class="md-raised md-button md-default-theme">
-						<md-tooltip> Logout? </md-tooltip>
-						{{user.name}}
+				<!-- User actions area -->
+				<div flex="20" flex-sm="40" class="actions" ng-controller="UserController" layout="row" layout-align="end end" md-theme="default">
+					<md-button ng-show="isGuest" ui-sref="register">Register</md-button>
+					<md-button ng-show="isGuest" ui-sref="login" class="md-raised md-button md-default-theme">Login</md-button>
+					
+					<md-button ng-show="!isGuest" ui-sref="profile({userId: user._id})" class="md-raised button-spaced md-primary">{{user.name}}</md-button>
+					<md-button ng-show="!isGuest" ng-click="logout()" class="button-spaced md-accent">
+						<md-tooltip> Logout </md-tooltip>
+						<i class="fa fa-sign-out"></i>
 					</md-button>
 				</div>
 
 			</div>
 		</md-toolbar>
 
-		<div layout="row" flex layout-padding>
+		<div layout="row" flex>
 
 			<!-- Angular View -->
 			<div layout="row" flex ui-view></div>
@@ -54,6 +56,7 @@
 	<script src="/modules/system/public/helpers.js"></script>
 	<script src="/modules/users/public/users.js"></script>
 	<script src="/modules/users/public/controllers/users.js"></script>
+	<script src="/modules/users/public/controllers/profile.js"></script>
 	<script src="/modules/users/public/routes/users.js"></script>
 	<script src="/modules/posts/public/posts.js"></script>
 	<script src="/modules/posts/public/directives/post.js"></script>

@@ -8,6 +8,7 @@ module.exports = function(System){
 	// Routes
 	router
 		.post('/', controller.create) // Create User
+		.get('/:userId', controller.get) // Get a User
 		.post('/login/', controller.login) // Login User
 		.post('/logout/', controller.logout); // Logout User
 	
