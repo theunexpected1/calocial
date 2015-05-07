@@ -4,15 +4,15 @@ angular.module('calocial.users')
 	.controller('UserController', [
 		'$rootScope',
 		'$scope',
-		'$resource', 
+		'users', 
 		'$location', 
 		'$mdToast', 
 		'storage',
-		function($rootScope, $scope, $resource, $location, $mdToast, storage){
+		function($rootScope, $scope, users, $location, $mdToast, storage){
 			$scope.userModel = {};
 			$scope.create = function(){
-
-				$resource('/auth/').save($scope.userModel, function(res){
+				var user = new users.single($scope.userModel);
+				user.$save(function(res){
 					if(res.status){
 						// toDo: Improvise toasts as system helpers
 						$mdToast.show({
@@ -26,12 +26,12 @@ angular.module('calocial.users')
 							hideDelay: 2000
 						});
 					}
-
 				});
 			};
 
 			$scope.login = function(){
-				$resource('/auth/login').save($scope.userModel, function(res){
+				var user = new users.login($scope.userModel);
+				user.$save(function(res){
 					if(res.status){
 						storage.set('user', angular.toJson(res.json));
 						$rootScope.$broadcast('loggedIn');
@@ -46,7 +46,8 @@ angular.module('calocial.users')
 			
 
 			$scope.logout = function(){
-				$resource('/auth/logout').save(function(res){
+				var user = new users.logout();
+				user.$save(function(res){
 					if(res.status){
 						storage.remove('user');
 						$rootScope.$broadcast('loggedOut');
