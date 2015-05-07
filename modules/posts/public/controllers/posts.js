@@ -4,12 +4,11 @@ angular.module('calocial.posts')
 	.controller('PostController', [
 		'$rootScope',
 		'$scope',
-		'$resource',
-		'$location',
 		'$timeout',
 		'$mdToast',
 		'postsSearch',
-		function($rootScope, $scope, $resource, $location, $timeout, $mdToast, postsSearch){
+		'posts',
+		function($rootScope, $scope, $timeout, $mdToast, postsSearch, posts){
 			$scope.posts = {};
 			$scope.post = {};
 			$scope.searchKeyword = '';
@@ -64,7 +63,7 @@ angular.module('calocial.posts')
 			 */
 			$scope.getPosts = function(){
 				$scope.clearFilters();
-				$resource('/posts').get(function(res){
+				posts.feed.get(function(res){
 					if(res.status){
 						$scope.posts = res.json;
 					}
@@ -76,7 +75,8 @@ angular.module('calocial.posts')
 			 * @return {null}
 			 */
 			$scope.create = function(){
-				$resource('/posts').save($scope.post, function(res){
+				var post = new posts.single($scope.post);
+				post.$save(function(res){
 					if(res.status){
 						console.log('post saved');
 						$mdToast.show({
