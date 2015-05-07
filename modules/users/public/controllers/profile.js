@@ -4,15 +4,14 @@ angular.module('calocial.users')
 	.controller('ProfileController', [
 		'$rootScope',
 		'$scope',
-		'$resource', 
+		'users', 
 		'$timeout', 
 		'$stateParams',
-		function($rootScope, $scope, $resource, $timeout, $stateParams){
+		function($rootScope, $scope, users, $timeout, $stateParams){
 			$scope.profile = {};
 			$scope.isInvalidProfile = false;
 			$scope.getUser = function(){
-				console.log('getting user');
-				$resource('/auth/' + $stateParams.userId).get(function(res){
+				users.single.get({userId: $stateParams.userId}, function(res){
 					if(res.status){
 						$scope.profile = res.json;
 						$scope.isInvalidProfile = false;
@@ -22,5 +21,4 @@ angular.module('calocial.users')
 				});
 			};
 			$scope.getUser();
-
 		}]);

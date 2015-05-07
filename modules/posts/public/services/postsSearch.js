@@ -2,9 +2,9 @@
 
 angular.module('calocial.posts')
 	.service('postsSearch', [
-		'$resource', 
+		'posts', 
 		'$q', 
-		function($resource, $q){
+		function(posts, $q){
 			var service = {};
 
 			/**
@@ -14,11 +14,9 @@ angular.module('calocial.posts')
 			 */
 			service.searchByKeyword = function(keyword){
 				return $q(function(resolve, reject){
-					console.log('attempting to search');
-					$resource('/meetings/search/:keyword', {keyword: keyword})
-						.get(function(res){
-							resolve(res);
-						});
+					posts.search.get({keyword: keyword}, function(res){
+						resolve(res);
+					});
 				});
 			};
 			return service;

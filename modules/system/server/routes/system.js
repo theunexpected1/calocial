@@ -10,7 +10,7 @@ module.exports = function(System){
 		},
 		{
 			module: 'posts',
-			root: 'meetings'
+			root: 'posts'
 		}
 	];
 
