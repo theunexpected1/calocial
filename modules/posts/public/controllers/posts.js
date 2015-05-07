@@ -64,7 +64,7 @@ angular.module('calocial.posts')
 			 */
 			$scope.getPosts = function(){
 				$scope.clearFilters();
-				$resource('/meetings').get(function(res){
+				$resource('/posts').get(function(res){
 					if(res.status){
 						$scope.posts = res.json;
 					}
@@ -76,7 +76,7 @@ angular.module('calocial.posts')
 			 * @return {null}
 			 */
 			$scope.create = function(){
-				$resource('/meetings').save($scope.post, function(res){
+				$resource('/posts').save($scope.post, function(res){
 					if(res.status){
 						console.log('post saved');
 						$mdToast.show({
