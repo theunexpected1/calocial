@@ -11,9 +11,12 @@
 						<img ng-src="{{profile.avatar || '/images/profile.jpg'}}" alt="">
 						<md-tooltip md-direction="top">{{(user._id == profile._id) ? user.name : profile.name}}</md-tooltip>
 					</div>
-					<div flex class="profile-name">
-						<h1> {{profile.name}} </h1>
-					</div>
+				</div>
+				<div flex class="profile-name-container" layout="column" layout-align="center center">
+					<h1 class="profile-name">
+						<a class="action-icon" href="#"><md-tooltip>Edit profile</md-tooltip><i class="fa fa-edit"></i></a>
+						<span>{{profile.name}}</span>
+					</h1>
 				</div>
 			</div>
 		</div>
