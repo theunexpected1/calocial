@@ -70,7 +70,7 @@ module.exports = function(System){
 			return communication.fail(res, null, 'User is not logged in');
 		}
 		var user = req.user;
-		user.name = req.body.name
+		user.name = req.body.name;
 		user.save(function(err){
 			if(err){
 				return communication.fail(res, err, 'Could not save user');
