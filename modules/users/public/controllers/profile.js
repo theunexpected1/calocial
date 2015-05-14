@@ -10,6 +10,15 @@ angular.module('calocial.users')
 		function($rootScope, $scope, users, $timeout, $stateParams){
 			$scope.profile = {};
 			$scope.isInvalidProfile = false;
+			$scope.isEditingProfile = false;
+
+			$scope.editProfile = function(){
+				$scope.isEditingProfile = true;
+			};
+			$scope.cancelEditProfile = function(){
+				$scope.isEditingProfile = false;
+			};
+
 			$scope.getUser = function(){
 				users.single.get({userId: $stateParams.userId}, function(res){
 					if(res.status){
