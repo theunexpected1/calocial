@@ -57,6 +57,28 @@ module.exports = function(System){
 		
 	};
 
+
+
+	/**
+	 * Get a user by _id
+	 * @param  {Object} req Request Object
+	 * @param  {Object} res Response Object
+	 * @return {Object}     Communication response object
+	 */
+	usersController.update = function(req, res){
+		if(!req.user){
+			return communication.fail(res, null, 'User is not logged in');
+		}
+		var user = req.user;
+		user.name = req.body.name
+		user.save(function(err){
+			if(err){
+				return communication.fail(res, err, 'Could not save user');
+			}
+			return communication.ok(res, user);
+		});
+	};
+
 	/**
 	 * Login user
 	 * @param  {Object} req Request Object

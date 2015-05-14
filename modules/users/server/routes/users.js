@@ -9,6 +9,7 @@ module.exports = function(System){
 	router
 		.post('/', controller.create) // Create User
 		.get('/:userId', controller.get) // Get a User
+		.put('/', controller.update) // Update User details
 		.post('/login/', controller.login) // Login User
 		.post('/logout/', controller.logout); // Logout User
 	
