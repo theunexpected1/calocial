@@ -13,10 +13,19 @@
 					</div>
 				</div>
 				<div flex class="profile-name-container" layout="column" layout-align="center center">
-					<h1 class="profile-name">
-						<a class="action-icon" href="#"><md-tooltip>Edit profile</md-tooltip><i class="fa fa-edit"></i></a>
-						<span>{{profile.name}}</span>
+					<h1 class="profile-name" ng-show="!isEditingProfile" >
+						<a class="action-icon"ng-click="editProfile()"><md-tooltip>Edit profile</md-tooltip><i class="fa fa-edit"></i></a>
+						<span ng-show="!isEditingProfile">{{profile.name}}</span>
 					</h1>
+					<div ng-show="isEditingProfile">
+						<form name="userForm" class="form" layout="row" flex layout-padding layout-margin>
+							<md-input-container flex="60" md-no-float>
+								<input type="text" ng-model="editingProfile.name" placeholder="Full name">
+							</md-input-container>
+							<md-button flex ng-click="updateProfile()"> <i class="fa fa-save"></i></md-button>
+							<md-button flex type="button" ng-click="cancelEditProfile()"><i class="fa fa-close"></i></md-button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

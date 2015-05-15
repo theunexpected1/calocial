@@ -9,6 +9,11 @@ angular.module('calocial.users')
 			usersFactory.login = $resource('/auth/login');
 			usersFactory.logout = $resource('/auth/logout');
 			usersFactory.single = $resource('/auth/:userId');
+			usersFactory.me = $resource('/auth', null, {
+				update: {
+					method: 'PUT'
+				}
+			});
 
 			return usersFactory;
 		}]);
