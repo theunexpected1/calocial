@@ -50,6 +50,10 @@
 					$location.path('/');
 				});
 
+				$scope.$on('userUpdated', function(event, user){
+					$scope.user = user;
+				});
+
 				$scope.authenticate = function(){
 					if(storage.get('user')){
 						$scope.user = angular.fromJson(storage.get('user'));

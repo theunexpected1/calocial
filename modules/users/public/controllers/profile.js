@@ -38,6 +38,9 @@ angular.module('calocial.users')
 					if(res.status){
 						$scope.cancelEditProfile();
 						storage.set('user', angular.toJson($scope.profile));
+
+						$scope.$emit('userUpdated', $scope.profile);
+
 						// toDo: Need to update header
 					} else{
 						console.log('could not save the user');
