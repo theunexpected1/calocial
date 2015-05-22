@@ -67,6 +67,10 @@ app-post {
         cursor: pointer; }
       .app-profile .hero-container .hero-avatar-container .hero-avatar img {
         height: 100%; }
+  .app-profile .hero-container .profile-name-container .profile-name .action-icon {
+    opacity: 0; }
+  .app-profile .hero-container .profile-name-container .profile-name:hover .action-icon {
+    opacity: 1; }
 
 /**
  * Buttons
@@ -76,3 +80,6 @@ app-post {
 
 md-card .md-actions .md-button, md-card-content .md-actions .md-button {
   margin: 0 0 0 6px; }
+
+.action-icon {
+  font-size: 22px; }

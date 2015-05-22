@@ -33,6 +33,9 @@ module.exports = function(System){
 	// Pre-save actions
 	UserSchema.pre('save', function(next){
 		var $this = this;
+		if (!$this.isModified('password')){
+			return next();
+		}
 
 		// 1. Symmetric encryption
 		async.waterfall([
